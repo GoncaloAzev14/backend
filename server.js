@@ -4,10 +4,19 @@ const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["https://localhost:3000", "https://192.168.1.200:3000"],
+    origin: ["https://localhost:3000", "https://192.168.1.200:3000", "https://thankful-bay-02857cb03.5.azurestaticapps.net/"],
     methods: ["GET", "POST"],
+    allowHeaders: ["Content-Type"],
+    credentials: true
   },
 });
+
+app.use(cors({
+  origin: ['https://localhost:3000', "https://192.168.1.200:3000", "https://thankful-bay-02857cb03.5.azurestaticapps.net/"],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+  credentials: true
+}));
 
 server.listen(5000, () => console.log("server is running on port 5000"));
 
