@@ -4,7 +4,7 @@ const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: ["https://localhost:3001", "https://192.168.1.200:3000", "https://thankful-bay-02857cb03.5.azurestaticapps.net/"],
+    origin: ["https://localhost:3001", "https://192.168.1.200:3000", "https://thankful-bay-02857cb03.5.azurestaticapps.net"],
     methods: ["GET", "POST"],
     allowHeaders: ["Content-Type"],
     credentials: true
@@ -12,7 +12,7 @@ const io = require("socket.io")(server, {
 });
 
 app.use(cors({
-  origin: ['https://localhost:3001', "https://192.168.1.200:3000", "https://thankful-bay-02857cb03.5.azurestaticapps.net/"],
+  origin: ['https://localhost:3001', "https://192.168.1.200:3000", "https://thankful-bay-02857cb03.5.azurestaticapps.net"],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true
