@@ -17,13 +17,6 @@ useAzureSocketIO(io, {
   connectionString: process.argv[2]
 });
 
-app.use(cors({
-  origin: "*",
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
-  credentials: true
-}));
-
 server.listen(5000, () => console.log("server is running on port 5000"));
 
 io.on("connection", async (socket) => {

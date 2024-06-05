@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js \"Endpoint=https://socketiogoncalo.webpubsub.azure.com;AccessKey=qUoRnDaN+yMf6UJVvjhBwiA1C1wGdPF3dTNjuk/DUW4=;Version=1.0;\""
   },
   "author": "",
   "license": "ISC",
