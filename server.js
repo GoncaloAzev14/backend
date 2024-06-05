@@ -2,15 +2,19 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const server = http.createServer(app);
-const { Server } = require("socket.io");
-
-const io = new Server (server, {
+const { useAzureSocketIO } = require("@azure/web-pubsub-socket.io");
+const io = require("socket.io")(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
     allowHeaders: ["Content-Type"],
     credentials: true
   },
+});
+
+useAzureSocketIO(io, {
+  hub: "my_hub", // The hub name can be any valid string.
+  connectionString: process.argv[2]
 });
 
 app.use(cors({
@@ -22,7 +26,7 @@ app.use(cors({
 
 server.listen(5000, () => console.log("server is running on port 5000"));
 
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
   // teste
   // Emit the ID to the newly connected client
   socket.emit("me", socket.id);
