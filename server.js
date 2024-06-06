@@ -8,19 +8,18 @@ const io = require("socket.io")(server, {
     origin: "*",
     methods: ["GET", "POST"],
     allowHeaders: ["Content-Type"],
-    credentials: true
+    credentials: true,
   },
 });
 
 useAzureSocketIO(io, {
   hub: "my_hub", // The hub name can be any valid string.
-  connectionString: process.argv[2]
+  connectionString: process.argv[2],
 });
 
 server.listen(5000, () => console.log("server is running on port 5000"));
 
 io.on("connection", async (socket) => {
-  // teste
   // Emit the ID to the newly connected client
   socket.emit("me", socket.id);
 
@@ -47,8 +46,8 @@ io.on("connection", async (socket) => {
   });
 
   // Handle declining calls
-  socket.on('callDeclined', (data) => {
-    io.to(data.to).emit('callDeclined');
+  socket.on("callDeclined", (data) => {
+    io.to(data.to).emit("callDeclined");
   });
 
   // Handle sending messages
